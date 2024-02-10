@@ -49,9 +49,7 @@ const typeScriptRuleset = merge(...typescript, {
 
 const reactRuleset = merge(...react, {
 	files: [`apps/**/*${commonFiles}`, `packages/ui/**/*${commonFiles}`],
-	plugins: { '@unocss': unocss },
 	rules: {
-		'@unocss/order': 2,
 		'@next/next/no-html-link-for-pages': 0,
 		'react/react-in-jsx-scope': 0,
 		'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
@@ -129,6 +127,13 @@ export default [
 		rules: { '@typescript-eslint/naming-convention': 0 },
 	},
 	reactRuleset,
+	{
+		files: [`apps/guide/**/*${commonFiles}`, `packages/ui/**/*${commonFiles}`],
+		plugins: { '@unocss': unocss },
+		rules: {
+			'@unocss/order': 2,
+		},
+	},
 	nextRuleset,
 	edgeRuleset,
 	{

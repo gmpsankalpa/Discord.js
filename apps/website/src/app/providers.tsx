@@ -1,5 +1,6 @@
 'use client';
 
+import { Provider as JotaiProvider } from 'jotai';
 import { ThemeProvider } from 'next-themes';
 import type { PropsWithChildren } from 'react';
 import { useSystemThemeFallback } from '~/hooks/useSystemThemeFallback';
@@ -9,5 +10,9 @@ export function Providers({ children }: PropsWithChildren) {
 	useUnregisterServiceWorker();
 	useSystemThemeFallback();
 
-	return <ThemeProvider attribute="class">{children}</ThemeProvider>;
+	return (
+		<JotaiProvider>
+			<ThemeProvider attribute="class">{children}</ThemeProvider>
+		</JotaiProvider>
+	);
 }
